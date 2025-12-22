@@ -1,0 +1,18 @@
+export interface Movie {
+    id: number;
+    title: string;
+    overview: string;
+    score: number;
+}
+
+export interface AppOptions {
+    genres: string[];
+    moods: string[];
+}
+
+export interface UserPreferences {
+    genre: string;
+    mood: string;
+    content: string;
+    element: string;
+}
