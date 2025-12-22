@@ -29,15 +29,22 @@ The app asks users about their movie preferences (genre, mood, content themes, a
 
 ## Setup
 
-**Backend:**
+**Option 1: Docker (Recommended)**
+```bash
+docker-compose up --build
+```
+
+**Option 2: Manual Setup**
+
+Backend:
 ```bash
 cd backend
-pip install django djangorestframework scikit-learn pandas
+pip install -r requirements.txt
 python scripts/build_engine.py  # Generate ML model
 python manage.py runserver
 ```
 
-**Frontend:**
+Frontend:
 ```bash
 cd frontend
 npm install
