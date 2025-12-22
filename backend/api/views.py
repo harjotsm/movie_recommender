@@ -62,19 +62,27 @@ def recommend_movies(request):
     try:
         user_vec = vectorizer.transform([search_query])
         similarity = cosine_similarity(user_vec, count_matrix)
-
+        
         scores = list(enumerate(similarity[0]))
         sorted_scores = sorted(scores, key=lambda x: x[1], reverse=True)
-
+        
         results = []
-        for i, (index, score) in enumerate(sorted_scores[:5]):
+        for i, (index, score) in enumerate(sorted_scores[:6]):
+            
+            release_date = str(movies.iloc[index]['release_date'])
+            year = release_date.split("-")[0] if "-" in release_date else "N/A"
+
             results.append({
                 "id": int(movies.iloc[index].name),
                 "title": movies.iloc[index]['title'],
                 "overview": movies.iloc[index]['overview'],
                 "score": round(score, 2),
+                "genres": movies.iloc[index]['genres'],
+                "year": year,
+                "rating": float(movies.iloc[index]['vote_average']),
+                "runtime": int(movies.iloc[index]['runtime'])
             })
-
+            
         return Response(results)
 
     except Exception as e:

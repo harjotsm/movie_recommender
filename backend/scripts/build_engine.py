@@ -10,7 +10,7 @@ except FileNotFoundError:
     print("Error, please ensure the dataset 'tmdb_5000_movies.csv' is in the correct path.")
     exit()
 
-features = ['keywords', 'genres', 'overview', 'title']
+features = ['keywords', 'genres', 'overview', 'title', 'release_date', 'vote_average', 'runtime']
 df_clean = df[features].copy()
 
 print("2. Cleaned Data")
@@ -29,6 +29,9 @@ def parse_features(x):
 df_clean['genres'] = df_clean['genres'].apply(parse_features)
 df_clean['keywords'] = df_clean['keywords'].apply(parse_features)
 df_clean['overview'] = df_clean['overview'].fillna('')
+df_clean['release_date'] = df_clean['release_date'].fillna('')
+df_clean['runtime'] = df_clean['runtime'].fillna(0)
+df_clean['vote_average'] = df_clean['vote_average'].fillna(0)
 print("   Example genre (cleaned):", df_clean['genres'].iloc[0])
 
 
