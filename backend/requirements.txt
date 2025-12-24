@@ -3,3 +3,8 @@ djangorestframework
 django-cors-headers
 pandas
 scikit-learn
+sentence-transformers
+torch
+numpy
+matplotlib
+seaborn

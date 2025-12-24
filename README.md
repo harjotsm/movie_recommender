@@ -39,8 +39,8 @@ docker-compose up --build
 Backend:
 ```bash
 cd backend
-pip install -r requirements.txt
-python scripts/build_engine.py  # Generate ML model
+pip install -r requirements.txt # this is only necessary once
+python scripts/build_sbert_model.py  # Generate ML model
 python manage.py runserver
 ```
 
