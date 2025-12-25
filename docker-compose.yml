@@ -6,6 +6,7 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
+      - ml_models:/app/api/ml
     environment:
       - PYTHONUNBUFFERED=1
 
@@ -24,3 +25,6 @@ services:
     tty: true
     depends_on:
       - backend
+
+volumes:
+  ml_models:
